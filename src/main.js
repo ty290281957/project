@@ -31,13 +31,15 @@ function hasPermission (purview, permissionRoles) {
   return purview.some(purview => permissionRoles.indexOf(purview.purviewLabel) >= 0)
 }
 
-const whiteList = ['/login']// no redirect whitelist
+const whiteList = ['/login/login']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
+  console.log(from)
+  console.log(to)
   NProgress.start() // start progress bar
   if (getToken()) { // determine if there has token
     /* has token */
-    if (to.path === '/login') {
+    if (to.path === '/login/login') {
       next({ path: '' })
       NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
     } else {
@@ -52,7 +54,7 @@ router.beforeEach((to, from, next) => {
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           })
         }).catch(() => {
-          next({ path: '/login' })
+          next({ path: '/login/login' })
         })
       } else {
         // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
@@ -70,7 +72,7 @@ router.beforeEach((to, from, next) => {
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
     } else {
-      next('/login') // 否则全部重定向到登录页
+      next('/login/login') // 否则全部重定向到登录页
       NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
     }
   }

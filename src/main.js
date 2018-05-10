@@ -31,7 +31,7 @@ function hasPermission (purview, permissionRoles) {
   return purview.some(purview => permissionRoles.indexOf(purview.purviewLabel) >= 0)
 }
 
-const whiteList = ['/login/login']// no redirect whitelist
+const whiteList = ['/login/login', '/login/verifyPhone', '/login/modifyPassword']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
   console.log(from)

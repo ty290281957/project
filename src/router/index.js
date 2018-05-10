@@ -32,20 +32,13 @@ export const constantRouterMap = [
       component: _import('login/index'),
       name: 'login'
     }, {
-      path: 'forget',
-      component: _import('forget/index'),
-      name: 'forget'
-    }]
-  },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/index',
-    children: [{
-      path: 'index',
-      component: _import('index/index'),
-      name: 'index',
-      meta: { title: '首页', icon: 'warning', noCache: true }
+      path: 'verifyPhone',
+      component: _import('verifyPhone/index'),
+      name: 'verifyPhone'
+    }, {
+      path: 'modifyPassword',
+      component: _import('modifyPassword/index'),
+      name: 'modifyPassword'
     }]
   }
 ]
@@ -58,6 +51,23 @@ export default new Router({
 
 // 动态路由表
 export const asyncRouterMap = [
+  {
+    path: '',
+    component: Layout,
+    redirect: '/bench',
+    meta: { roles: ['test1'] },
+    children: [{
+      path: 'bench',
+      component: _import('bench/index'),
+      name: 'bench',
+      meta: {
+        title: '工作台',
+        icon: 'warning',
+        noCache: true,
+        roles: ['test1']
+      }
+    }]
+  },
   {
     path: '/test1',
     component: Layout,

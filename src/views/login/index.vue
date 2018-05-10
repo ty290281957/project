@@ -37,7 +37,7 @@
 
         <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登陆</el-button>
         <div class="forget">
-          <router-link :to="{ path: 'forget' }">
+          <router-link :to="{ path: 'verifyPhone' }">
             <span>忘记密码?</span>
           </router-link>
         </div>

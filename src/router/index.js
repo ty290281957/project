@@ -69,16 +69,16 @@ export const asyncRouterMap = [
     }]
   },
   {
-    path: '/test1',
+    path: '/memberCentre',
     component: Layout,
-    redirect: '/test1/index',
+    // redirect: '/memberCentre/index',
     meta: { roles: ['test1'] }, // you can set roles in root nav
     children: [{
       path: 'index',
-      component: _import('test1/index'),
-      name: 'test1',
+      component: _import('memberCentre/index'),
+      name: 'memberCentre',
       meta: {
-        title: 'test1',
+        title: '会员中心',
         icon: 'warning',
         roles: ['test1'] // or you can only set roles in sub nav
       }
